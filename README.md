@@ -1,44 +1,46 @@
-# OpenClaw Collab Site
+# OpenClaw 协同控制台
 
-一个用于展示 Codex + OpenClaw 协同方式的 Vite React 控制台站点。
+这是一个展示 Codex + OpenClaw 协同方式的 Vite React 控制台站点。页面重点不是营销介绍，而是把当前项目状态、短指令交接、发布检查和下一步动作放在同一个工作台里。
 
-## Local Development
+## 本地启动
 
 ```powershell
 npm install
 npm run dev
 ```
 
-## Build
+## 验证与构建
 
 ```powershell
-npm run test
+npm test
 npm run build
+npm run build:pages
 ```
+
+`npm run build:pages` 会生成 `docs/`，并自动同步根目录 `index.html`，这样 GitHub Pages 使用 `main / root` 发布时也能加载最新哈希资源。
 
 ## GitHub Pages
 
-这个仓库使用 GitHub Pages 的 branch 部署方式：
+仓库地址：
 
-1. 运行 `npm run build:pages` 生成 `docs/`。
-2. 在 GitHub 仓库 `Settings > Pages` 里选择：
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/docs`
-3. 保存后访问：
+```text
+https://github.com/yuqd888-lgtm/openclaw-collab-site
+```
+
+线上地址：
 
 ```text
 https://yuqd888-lgtm.github.io/openclaw-collab-site/
 ```
 
-首次推送远端：
+推荐 Pages 设置：
 
-```powershell
-git remote add origin https://github.com/<your-username>/openclaw-collab-site.git
-git branch -M main
-git push -u origin main
-```
+1. Source: `Deploy from a branch`
+2. Branch: `main`
+3. Folder: `/(root)`
 
-## OpenClaw Collaboration
+## OpenClaw 协同方式
 
-Codex 负责长上下文、代码实现、测试和 Git 操作判断。OpenClaw 只接收短动作指令，例如运行构建、检查目录、返回终端输出。可执行的短任务维护在 `OPENCLAW_TASKS.md`。
+Codex 负责长上下文、代码实现、测试、发布判断和问题复盘。OpenClaw 只接收短动作指令，例如检查目录、运行构建、打开预览、返回终端输出或截图。
+
+可执行短任务维护在 `OPENCLAW_TASKS.md`。

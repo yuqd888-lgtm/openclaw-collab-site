@@ -7,13 +7,13 @@ Codex keeps the long context. OpenClaw should receive only one short action at a
 1. Check project files:
    `Get-ChildItem -Force C:\Users\COLORFUL\Desktop\openclaw助手\openclaw-collab-site`
 
-2. Verify the build:
-   `cd C:\Users\COLORFUL\Desktop\openclaw助手\openclaw-collab-site; npm run build`
+2. Verify tests and GitHub Pages build:
+   `cd C:\Users\COLORFUL\Desktop\openclaw助手\openclaw-collab-site; npm test; npm run build:pages`
 
 3. Run local preview:
    `cd C:\Users\COLORFUL\Desktop\openclaw助手\openclaw-collab-site; npm run dev`
 
-4. After GitHub remote is added, confirm status:
+4. Confirm Git status:
    `cd C:\Users\COLORFUL\Desktop\openclaw助手\openclaw-collab-site; git status --short --branch`
 
 ## Rules

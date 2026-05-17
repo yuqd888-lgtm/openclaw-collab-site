@@ -1,5 +1,6 @@
 import { render, screen, within } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 import App from './App'
 
 describe('OpenClaw collaboration console', () => {
@@ -32,5 +33,32 @@ describe('OpenClaw collaboration console', () => {
     expect(
       screen.getByText('网页创建公开仓库 openclaw-collab-site'),
     ).toBeInTheDocument()
+  })
+
+  it('provides practical copy-ready OpenClaw commands', async () => {
+    const writeText = vi.fn().mockResolvedValue()
+    const user = userEvent.setup()
+    Object.defineProperty(window.navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
+    })
+
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: '复制检查文件' }))
+
+    expect(writeText).toHaveBeenCalledWith(
+      'Get-ChildItem -Force C:\\Users\\COLORFUL\\Desktop\\openclaw助手\\openclaw-collab-site',
+    )
+    expect(screen.getByText('已复制检查文件')).toBeInTheDocument()
+  })
+
+  it('explains the three optimization priorities clearly', () => {
+    render(<App />)
+
+    expect(screen.getByText('1. 控制台实用化')).toBeInTheDocument()
+    expect(screen.getByText('3. 内容说明清楚')).toBeInTheDocument()
+    expect(screen.getByText('2. 视觉高级感')).toBeInTheDocument()
+    expect(screen.getByText('线上可访问')).toBeInTheDocument()
   })
 })

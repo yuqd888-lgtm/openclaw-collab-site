@@ -1,19 +1,19 @@
 .console-shell {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 32px 0 48px;
+  padding: 32px 0 52px;
 }
 
 .hero-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  gap: 24px;
-  align-items: stretch;
-  min-height: 360px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 0;
+  min-height: 380px;
   border: 1px solid var(--border);
+  border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(16, 24, 40, 0.96), rgba(23, 37, 84, 0.9)),
-    radial-gradient(circle at top right, rgba(20, 184, 166, 0.34), transparent 34%);
+    linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(22, 48, 67, 0.94)),
+    radial-gradient(circle at 88% 18%, rgba(45, 212, 191, 0.22), transparent 34%);
   color: #dbeafe;
   overflow: hidden;
 }
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 42px;
+  padding: 46px;
 }
 
 .eyebrow,
@@ -30,7 +30,7 @@
   margin: 0;
   color: var(--muted);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -39,7 +39,7 @@
   max-width: 720px;
   margin: 12px 0 18px;
   color: #f8fafc;
-  font-size: clamp(38px, 6vw, 72px);
+  font-size: clamp(42px, 6vw, 74px);
   line-height: 0.98;
 }
 
@@ -48,10 +48,30 @@
 }
 
 .hero-text {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0;
-  color: #bfdbfe;
+  color: #c7d2fe;
   font-size: 18px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(203, 213, 225, 0.24);
+  border-radius: 8px;
+  color: #ecfeff;
+  background: rgba(15, 23, 42, 0.42);
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .signal-board {
@@ -60,17 +80,18 @@
   gap: 12px;
   padding: 24px;
   align-content: center;
+  border-left: 1px solid rgba(203, 213, 225, 0.15);
   background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.42), rgba(15, 23, 42, 0.12)),
-    repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.16) 0 1px, transparent 1px 44px);
+    linear-gradient(180deg, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.18)),
+    repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.14) 0 1px, transparent 1px 44px);
 }
 
 .signal-card {
-  min-height: 86px;
+  min-height: 92px;
   padding: 18px;
   border: 1px solid rgba(203, 213, 225, 0.22);
   border-radius: 8px;
-  background: rgba(15, 23, 42, 0.72);
+  background: rgba(15, 23, 42, 0.76);
 }
 
 .signal-card span {
@@ -81,21 +102,21 @@
 
 .signal-card strong {
   display: block;
-  margin-top: 5px;
+  margin-top: 6px;
   color: #f8fafc;
-  font-size: 24px;
+  font-size: 25px;
   line-height: 1.1;
 }
 
 .signal-card p {
   margin: 8px 0 0;
-  color: #bae6fd;
+  color: #99f6e4;
   font-size: 14px;
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
   gap: 18px;
   margin-top: 18px;
 }
@@ -105,6 +126,7 @@
   border-radius: 8px;
   background: var(--panel-bg);
   padding: 24px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
 .panel-heading {
@@ -130,20 +152,36 @@
   line-height: 1.3;
 }
 
-.role-grid {
+.role-grid,
+.flow-line,
+.order-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
+.role-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flow-line {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .role-card,
-.flow-step {
+.flow-step,
+.order-item,
+.command-card {
   position: relative;
-  min-height: 152px;
-  padding: 18px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);
+}
+
+.role-card,
+.flow-step,
+.order-item {
+  min-height: 152px;
+  padding: 18px;
 }
 
 .node-dot {
@@ -157,13 +195,16 @@
 
 .role-card p,
 .flow-step p,
-.next-list,
-.command-list {
+.order-item p,
+.command-card p,
+.next-list {
   color: var(--text);
 }
 
 .role-card p,
-.flow-step p {
+.flow-step p,
+.order-item p,
+.command-card p {
   margin: 10px 0 0;
 }
 
@@ -180,27 +221,58 @@
   font-size: 14px;
 }
 
-.command-list,
-.next-list {
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
+.command-stack {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
 }
 
-.command-list li,
-.next-list li {
-  padding: 12px 0;
-  border-top: 1px solid var(--border);
+.command-card {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.command-card code,
+.terminal-card code {
+  display: block;
+  color: #a7f3d0;
+  font-size: 14px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.command-card code {
+  padding: 12px;
+  border-radius: 8px;
+  background: #0f172a;
+}
+
+.command-card button {
+  justify-self: start;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(15, 118, 110, 0.32);
+  border-radius: 8px;
+  color: #0f766e;
+  background: #ecfdf5;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.command-card button:focus-visible,
+.hero-actions a:focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.38);
+  outline-offset: 2px;
 }
 
 .flow-panel {
   grid-column: 1 / -1;
 }
 
-.flow-line {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+.order-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.92));
 }
 
 .terminal-card {
@@ -211,15 +283,18 @@
   background: #0f172a;
 }
 
-.terminal-card code {
-  display: block;
-  color: #a7f3d0;
-  font-size: 14px;
-  white-space: normal;
-  word-break: break-word;
+.next-list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-@media (max-width: 860px) {
+.next-list li {
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
   .console-shell {
     width: min(100% - 20px, 720px);
     padding: 16px 0 32px;
@@ -236,15 +311,14 @@
     min-height: auto;
   }
 
-  .hero-copy {
-    padding: 28px 22px;
+  .hero-copy,
+  .signal-board,
+  .panel {
+    padding: 20px;
   }
 
   .signal-board {
-    padding: 18px;
-  }
-
-  .panel {
-    padding: 20px;
+    border-left: none;
+    border-top: 1px solid rgba(203, 213, 225, 0.15);
   }
 }
