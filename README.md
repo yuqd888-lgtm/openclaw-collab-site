@@ -18,17 +18,26 @@ npm run build
 
 ## GitHub Pages
 
-1. 在 GitHub 网页创建公开空仓库 `openclaw-collab-site`。
-2. 不勾选初始化 README、gitignore 或 license。
-3. 在本地添加 remote：
+这个仓库使用 GitHub Pages 的 branch 部署方式：
+
+1. 运行 `npm run build:pages` 生成 `docs/`。
+2. 在 GitHub 仓库 `Settings > Pages` 里选择：
+   - Source: `Deploy from a branch`
+   - Branch: `main`
+   - Folder: `/docs`
+3. 保存后访问：
+
+```text
+https://yuqd888-lgtm.github.io/openclaw-collab-site/
+```
+
+首次推送远端：
 
 ```powershell
 git remote add origin https://github.com/<your-username>/openclaw-collab-site.git
 git branch -M main
 git push -u origin main
 ```
-
-4. push 到 `main` 后，`.github/workflows/pages.yml` 会构建并发布 `dist`。
 
 ## OpenClaw Collaboration
 
